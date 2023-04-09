@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anotações Rápidas online Grátis | FlyyAplicativos</title> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+</head>
+
+<style>
+  * {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: rgba(196, 197, 198, 0.211);
+  }
+
+  section {
+    display: block;
+    position: relative;
+    width: 70%;
+    height: 75vh;
+    box-shadow: 0px 4px 10px 0px rgba(105, 104, 104, 0.2);
+    margin: auto;
+
+
+
+  }
+
+  #contaner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+
+  #contaner_menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(244, 237, 159);
+    margin-bottom: 1px;
+    margin-top: 50px;
+    align-items: center;
+    padding: 20px;
+
+  }
+
+  #contaner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+
+  }
+
+
+  #icone {
+    width: 22px;
+    margin-right: 20px;
+
+
+  }
+
+  h1 {
+    font-size: 30px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+
+  }
+
+
+
+  #menu2 {
+    width: 4px;
+    height: 4px;
+    background-color: rgb(42, 41, 41);
+    border-radius: 50%;
+    margin: 4px;
+
+  }
+
+
+
+
+  #texto {
+    width: 100%;
+    height: 100%;
+    outline: 0px;
+    border: none;
+    background-color: rgb(244, 237, 159);
+    resize: none;
+    margin: 0;
+    padding: 20px;
+    display: block;
+    line-height: 1;
+    font-size: 14px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+
+  }
+
+  textarea::-webkit-scrollbar {
+    width: 12px;
+
+  }
+
+  textarea::-webkit-scrollbar-track {
+    background: rgb(252, 242, 133);
+
+
+  }
+
+  #contaner_noti {
+    display: flex;
+    align-items: center;
+
+
+  }
+
+
+
+  #noti {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(12, 201, 5);
+    border-radius: 50%;
+    display: none;
+
+
+  }
+
+
+
+  footer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    /* alinha verticalmente */
+    width: 100%;
+    height: 25px;
+    background-color: rgb(244, 237, 159);
+    margin-top: 1px;
+    padding-left: 10px;
+    padding-right: 2px;
+  }
+
+  #btn-topo {
+
+    display: none;
+    background-color: transparent;
+    margin-left: auto;
+
+
+
+
+  }
+
+
+  #icone-top {
+
+    width: 35px;
+
+
+
+  }
+
+
+
+  #mensagem {
+    padding-left: 8px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+  }
+
+  #contadorCaracteres {
+    padding-left: 0px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+
+
+
+  }
+
+  #opcoes {
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    line-height: 2.5;
+    box-shadow: 0px 4px 10px 0px rgba(105, 104, 104, 0.2);
+    top: 25px;
+    right: 25px;
+    position: absolute;
+    border-radius: 5px;
+    display: none;
+    border: 1px solid rgb(189, 190, 192);
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+
+    transition: transform 0.6s opacity 0.1s 0.3s;
+
+
+
+
+  }
+
+
+  #link {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    padding: 4px;
+    border-radius: 5px;
+
+  }
+
+
+  #link:hover {
+    background-color: rgba(238, 238, 238, 0.275);
+  }
+
+
+
+  /* Estilos para telas menores */
+@media only screen and (max-width: 600px) {
+  section {
+   
+    width: 90%;
+    height: 75vh;
+
+  }
+}
+
+
+
+</style>
+
+
+
+
+
+
+<body>
+  <section id="conteudo-geral">
+
+    <div id="contaner_menu">
+      <h1>Nota</h1>
+
+      <div id="contaner">
+        <img id="icone" src="img/icone_editar.svg" alt="">
+
+        <div class="menu-hamburguer" id="menu-hamburguer" onclick="show()">
+          <div id="menu2"></div>
+          <div id="menu2"></div>
+          <div id="menu2"></div>
+
+        </div>
+      </div>
+    </div>
+
+    <textarea name="" id="texto" cols="30" rows="10" onclick="editar()" onkeydown="mens()" onblur="ocult()"
+      onkeyup="add(), handleBlur()" onscroll="checkscroll()" placeholder="Digite algo"></textarea>
+
+
+
+
+
+    <footer>
+      <div id="contaner_noti">
+        <div id="noti"></div>
+        <p id="mensagem"></p>
+      </div> <span id="contadorCaracteres"></span> <button id="btn-topo" onclick="topArea()">
+        <img src="img/icone-top.svg" alt="" id="icone-top"></button></p>
+    </footer>
+
+
+
+    <div id="opcoes">
+      <div id="link" class="copiar" onclick="copiarTexto()"><a href="#"></a>Copiar</div>
+      <div id="link" onclick="printDiv()"><a href="#"></a>Imprimir</div>
+      <div id="link" onclick="gerarPDF()"><a href="#"></a>Salvar Pdf</div>
+      <div id="link" onclick="sharePage()"><a href="#"></a>Compartilhar</div>
+      <div id="link" onclick="apagar()"><a href="#"></a>Apagar</div>
+    </div>
+
+  
+
+  </section>
+
+
+
+
+
+  <script>
+
+    let dados = [];
+
+    function add() {
+      const texto = document.querySelector("#texto").value;
+      dados = texto;
+      localStorage.setItem('dados', JSON.stringify(dados));
+
+
+
+    };
+
+    function ler() {
+      const dados_salvos = JSON.parse(localStorage.getItem('dados'));
+      if (dados_salvos !== null) {
+        document.getElementById("texto").value = dados_salvos;
+      }
+
+    };
+
+
+
+
+    var timeoutId; // variável para armazenar o ID do timeout
+
+
+    function mens() {
+
+      var paragrafo = document.getElementById("mensagem");
+      // Altera o conteúdo do parágrafo para o segundo texto
+      paragrafo.innerHTML = "Salvando...";
+      document.getElementById("noti").style.backgroundColor = "rgb(141, 236, 177)";
+      document.getElementById("noti").style.display = "block";
+
+
+    };
+
+
+    function ocult() {
+
+      var paragrafo = document.getElementById("mensagem");
+
+      setTimeout(function () {
+        // Altera o conteúdo do parágrafo para o segundo texto
+        paragrafo.innerHTML = "";
+        document.getElementById("noti").style.display = "none";
+      }, 2000);
+
+
+
+    };
+
+
+
+
+
+
+    function mensfixa() {
+
+      var paragrafo = document.getElementById("mensagem");
+      // Altera o conteúdo do parágrafo para o segundo texto
+      paragrafo.innerHTML = "Salvo com sucesso!";
+      document.getElementById("noti").style.backgroundColor = "rgb(12, 201, 5)";
+      document.getElementById("noti").style.display = "block";
+    };
+
+    // Função para lidar com o evento "blur" do input
+    function handleBlur() {
+      // Cancela o timeout anterior, se existir
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      // Define um novo timeout de 2 segundos para exibir a mensagem
+      timeoutId = setTimeout(function () {
+        mensfixa();
+      }, 2000);
+    };
+
+
+
+    function topArea() {
+      let textarea = document.getElementById("texto");
+
+
+      textarea.scrollTop = 0;
+
+    };
+
+
+    function checkscroll() {
+      let textarea = document.getElementById("texto");
+      let btn = document.getElementById("btn-topo");
+      if (textarea.scrollTop > 0) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+
+
+
+      }
+    };
+
+
+    function show() {
+      var menu = document.getElementById("opcoes");
+
+      if (menu.style.display === "block") {
+        // Se o menu já está visível, esconde o menu
+        menu.style.display = "none";
+
+
+
+      } else {
+        // Se o menu não está visível, mostra o menu
+        menu.style.display = "block";
+        menu.style.opacity = 1;
+        menu.style.transition = "all 1s";
+
+
+
+
+        // Adiciona um evento de clique no documento todo
+        document.addEventListener('click', function (e) {
+          var menu = document.getElementById("opcoes");
+          // Verifica se o clique foi dentro ou fora do menu
+          if (!menu.contains(e.target) && !document.getElementById("menu-hamburguer").contains(e.target)) {
+            // Se o clique foi fora do menu, esconde o menu
+            menu.style.display = "none";
+            menu.style.opacity = 1;
+            menu.style.transition = "all 1s";
+          }
+        });
+      }
+
+    };
+
+
+
+    function contaCaracteres(texto) {
+      return texto.length;
+    }
+
+    const minhaTextArea = document.getElementById("texto");
+    minhaTextArea.addEventListener("input", function () {
+      const numeroDeCaracteres = contaCaracteres(minhaTextArea.value);
+      document.getElementById("contadorCaracteres").innerHTML = "Carateres &nbsp;" + numeroDeCaracteres;
+    });
+
+
+    function apagar() {
+      if (confirm("Deseja Realmente Apagar o texto!")) {
+
+
+        document.getElementById("texto").value = "";
+
+        const texto = document.querySelector("#texto").value;
+        dados = texto;
+        localStorage.setItem('dados', JSON.stringify(dados));
+
+      }
+    };
+
+    // função imprimir 
+
+    function printDiv() {
+
+      var conteudo = document.getElementById("texto").value;
+      var titulo = "Nota"; // Título que será impresso
+      var win = window.open();
+      win.document.write("<h1>" + titulo + "</h1>"); // Adiciona o título ao documento a ser impresso
+      win.document.write(conteudo);
+      win.print();
+      win.close();//Fecha após a impressão.  
+
+
+    };
+
+
+    function gerarPDF() {
+  const doc = new jsPDF('p', 'pt', 'a4');
+  const margem = 30;
+  const larguraPagina = doc.internal.pageSize.getWidth() - margem * 2;
+  const alturaPagina = doc.internal.pageSize.getHeight() - margem * 2;
+  const conteudo = document.getElementById("texto").value;
+  const titulo = "Nota"; // Título que será impresso
+  
+  doc.setFontSize(20);
+  doc.text(titulo, margem, 40);
+  
+  doc.setFontSize(12);
+  let linhas = doc.splitTextToSize(conteudo, larguraPagina);
+  let alturaLinha = doc.getTextDimensions('M').h; // altura aproximada de uma linha
+  let alturaMaxima = alturaPagina - 60; // altura disponível para o texto
+  let y = 60; // posição vertical inicial
+  let i = 0; // índice da linha atual
+  
+  while (i < linhas.length) {
+    if (y + alturaLinha <= alturaMaxima) {
+      // a linha cabe na página atual
+      doc.text(linhas[i], margem, y);
+      y += alturaLinha;
+      i++;
+    } else {
+      // a linha não cabe na página atual, cria uma nova página
+      doc.addPage();
+      doc.setFontSize(20);
+      doc.text(titulo, margem, 40);
+      doc.setFontSize(12);
+      y = 60;
+      alturaMaxima = alturaPagina - 60;
+    }
+  }
+  
+  doc.save("meu_documento.pdf");
+};
+
+// compartilhar 
+
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      url: window.location.href
+    })
+    .then(() => {
+      console.log('Link compartilhado com sucesso!');
+    })
+    .catch((error) => {
+      console.error('Erro ao compartilhar link:', error);
+    });
+  } else {
+    console.warn('Web Share API não suportada neste navegador!');
+  }
+}
+
+function copiarTexto() {
+  const textarea = document.getElementById("texto");
+  const copiarElement =  document.querySelector('.copiar');
+  copiarElement.innerHTML = "Copiado!";
+  
+  textarea.select();
+  document.execCommand('copy');
+
+  setTimeout(function() {
+    copiarElement.innerHTML = "Copiar";
+  }, 3000); // Muda o nome da classe para "Copiar" após 3 segundos
+};
+
+
+
+
+
+
+
+
+
+
+
+    window.onload = ler;
+
+
+
+  </script>
+
+
+
+
+</body>
+
+</html>
