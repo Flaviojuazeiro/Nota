@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anotações Rápidas online Grátis | FlyyAplicativos</title> 
+  <title>Anotações Rápidas online Grátis | FlyyAplicativos</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <link rel="shortcut icon" href="img/icone_editar.svg" type="image/x-icon">
 
 </head>
 
-<style version="10" >
+<style version="10">
   * {
     border: 0px;
     margin: 0px;
@@ -19,26 +19,30 @@
     box-sizing: border-box;
   }
 
-  body {
-       background-color: rgba(196, 197, 198, 0.211);
-    
+  html,body  {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(196, 197, 198, 0.211);  
+
   }
 
+  #espaco{
+    width: 100%;
+    height: 50px;
+  }
  
+
+
 
   section {
     display: block;
     position: relative;
     width: 70%;
-    height: 85vh;
+    height: 85%;
     box-shadow: 0px 4px 10px 0px rgba(105, 104, 104, 0.2);
-    margin: auto;  
+    margin: auto;
     border-radius: 10px 10px 10px 10px;
-    margin-top: 50px;
-   
-   
-
-
+ 
 
   }
 
@@ -61,11 +65,11 @@
     align-items: center;
     padding: 20px;
     border-radius: 5px 5px 0px 0px;
-  
-    
-   
-  
-    
+
+
+
+
+
 
   }
 
@@ -73,7 +77,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-   
+
 
 
   }
@@ -99,22 +103,22 @@
   #menu2 {
     width: 4px;
     height: 4px;
-    background-color:  #2b2b2b;
+    background-color: #2b2b2b;
     border-radius: 50%;
     margin: 4px;
     cursor: pointer;
-  
+
 
   }
 
- 
+
 
 
 
 
   #texto {
     width: 100%;
-    height: 88%; 
+    height: 88%;
     outline: 0px;
     border: none;
     background-color: rgb(244, 237, 159);
@@ -144,7 +148,7 @@
   #contaner_noti {
     display: flex;
     align-items: center;
-  
+
 
 
   }
@@ -176,7 +180,7 @@
     padding-left: 10px;
     padding-right: 2px;
     border-radius: 0px 0px 5px 5px;
-    
+
   }
 
   #btn-topo {
@@ -194,14 +198,14 @@
   #icone-top {
 
     width: 35px;
-   }
+  }
 
 
-     
 
 
-  
- 
+
+
+
 
 
 
@@ -216,8 +220,8 @@
     padding-left: 0px;
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 12px;
-  
-    
+
+
     color: #2b2b2b;
 
 
@@ -264,7 +268,7 @@
     background-color: rgba(125, 125, 125, 0.267);
   }
 
-  #logo{
+  #logo {
     width: 100%;
     height: 25px;
     color: #2b2b2b;
@@ -278,15 +282,23 @@
 
 
   /* Estilos para telas menores */
-@media only screen and (max-width: 600px) {
-  section {
-   
-    width: 95%;
-    height: 90vh;
+  @media only screen and (max-width: 600px) {
+    section {
 
+      width: 100%;
+      height: 100%;
+
+    }
+    #espaco{
+     
+      display: none;
+    }
+
+    #texto{
+      font-size: 16px;
+      
+    }
   }
-}
-
 
 
 </style>
@@ -297,7 +309,7 @@
 
 
 <body>
-
+  <div id="espaco"></div>
   <section id="conteudo-geral">
 
     <div id="contaner_menu">
@@ -315,13 +327,9 @@
       </div>
     </div>
 
-   
-      <textarea name="" id="texto"   onkeydown="mens()" onblur="ocult()"
-      onkeyup="add(), handleBlur()" onscroll="checkscroll()" placeholder="Digite algo" ></textarea>
-  
 
-    
-
+    <textarea name="" id="texto"  onkeydown="mens()" onblur="ocult()"
+      onkeyup="add(), handleBlur()" onscroll="checkscroll()" placeholder="Digite algo"></textarea>
 
 
 
@@ -348,14 +356,14 @@
       <div id="link" onclick="gerarPDF()"><a href="#"></a>Salvar Pdf</div>
       <div id="link" onclick="sharePage()"><a href="#"></a>Compartilhar</div>
       <div id="link" onclick="apagar()"><a href="#"></a>Apagar</div>
-    </div>  
+    </div>
 
   </section>
 
 
   <div id="logo">FlyyAplicativos</div>
 
- 
+
 
 
 
@@ -486,7 +494,7 @@
         // Adiciona um evento de clique no documento todo
         document.addEventListener('click', function (e) {
           var menu = document.getElementById("opcoes");
-             // Verifica se o clique foi dentro ou fora do menu
+          // Verifica se o clique foi dentro ou fora do menu
           if (!menu.contains(e.target) && !document.getElementById("menu-hamburguer").contains(e.target)) {
             // Se o clique foi fora do menu, esconde o menu
             menu.style.display = "none";
@@ -526,101 +534,96 @@
     // função imprimir 
 
     function printDiv() {
-    
-    var conteudo = document.getElementById("texto").value.replace(/\n/g, "<br>"); 
-    var titulo = "Nota";
-    var win = window.open("", "_blank"); // abre nova guia
-    win.document.write("<h1>" + titulo + "</h1>");
-    win.document.write(conteudo);
-    win.print(); 
-    win.close(); 
 
-    var win = window.open("", "_blank"); // abre nova guia
-  
-    win.document.write("<h1>" + titulo + "</h1>");
-    win.document.write(conteudo);
-      
-    
+      var conteudo = document.getElementById("texto").value.replace(/\n/g, "<br>");
+      var tituloOriginal = document.title; // salva o título original da guia
+
+      var titulo = "Nota";
+      document.title = ""; // remove o título da guia
+      var win = window.open("", "_blank"); // abre nova guia
+      win.document.write("<h1>" + titulo + "</h1>");
+      win.document.write(conteudo);
+      win.document.title =  tituloOriginal; // altera o título da guia
+      win.print();
+      win.close();
+      document.title = tituloOriginal; // redefine o título da guia
+
     };
 
-
-      
     
-     
-
-
-
-
+   
+    
 
     function gerarPDF() {
-  const doc = new jsPDF('p', 'pt', 'a4');
-  const margem = 30;
-  const larguraPagina = doc.internal.pageSize.getWidth() - margem * 2;
-  const alturaPagina = doc.internal.pageSize.getHeight() - margem * 2;
-  const conteudo = document.getElementById("texto").value;
-  const titulo = "Nota"; // Título que será impresso
-  
-  doc.setFontSize(20);
-  doc.text(titulo, margem, 40);
-  
-  doc.setFontSize(12);
-  let linhas = doc.splitTextToSize(conteudo, larguraPagina);
-  let alturaLinha = doc.getTextDimensions('M').h; // altura aproximada de uma linha
-  let alturaMaxima = alturaPagina - 60; // altura disponível para o texto
-  let y = 60; // posição vertical inicial
-  let i = 0; // índice da linha atual
-  
-  while (i < linhas.length) {
-    if (y + alturaLinha <= alturaMaxima) {
-      // a linha cabe na página atual
-      doc.text(linhas[i], margem, y);
-      y += alturaLinha;
-      i++;
-    } else {
-      // a linha não cabe na página atual, cria uma nova página
-      doc.addPage();
+      const doc = new jsPDF('p', 'pt', 'a4');
+      const margem = 30;
+      const larguraPagina = doc.internal.pageSize.getWidth() - margem * 2;
+      const alturaPagina = doc.internal.pageSize.getHeight() - margem * 2;
+      const conteudo = document.getElementById("texto").value;
+      const titulo = "Nota"; // Título que será impresso
+
       doc.setFontSize(20);
-     // doc.text(titulo, margem, 40);
+      doc.text(titulo, margem, 40);
+
       doc.setFontSize(12);
-      y = 60;
-      alturaMaxima = alturaPagina - 60;
+      let linhas = doc.splitTextToSize(conteudo, larguraPagina);
+      let alturaLinha = doc.getTextDimensions('M').h; // altura aproximada de uma linha
+      let alturaMaxima = alturaPagina - 60; // altura disponível para o texto
+      let y = 60; // posição vertical inicial
+      let i = 0; // índice da linha atual
+
+      while (i < linhas.length) {
+        if (y + alturaLinha <= alturaMaxima) {
+          // a linha cabe na página atual
+          doc.text(linhas[i], margem, y);
+          y += alturaLinha;
+          i++;
+        } else {
+          // a linha não cabe na página atual, cria uma nova página
+          doc.addPage();
+          doc.setFontSize(20);
+          // doc.text(titulo, margem, 40);
+          doc.setFontSize(12);
+          y = 60;
+          alturaMaxima = alturaPagina - 60;
+        }
+      }
+
+      doc.save("meu_documento.pdf");
+    };
+
+    // compartilhar 
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.title,
+          url: window.location.href
+        })
+          .then(() => {
+            console.log('Link compartilhado com sucesso!');
+          })
+          .catch((error) => {
+            console.error('Erro ao compartilhar link:', error);
+          });
+      } else {
+        console.warn('Web Share API não suportada neste navegador!');
+      }
     }
-  }
+
+    function copiarTexto() {
+      const textarea = document.getElementById("texto");
+      const copiarElement = document.querySelector('.copiar');
+      copiarElement.innerHTML = "Copiado!";
+
+      textarea.select();
+      document.execCommand('copy');
+
+      setTimeout(function () {
+        copiarElement.innerHTML = "Copiar";
+      }, 3000); // Muda o nome da classe para "Copiar" após 3 segundos
+    };
   
-  doc.save("meu_documento.pdf");
-};
-
-// compartilhar 
-
-function sharePage() {
-  if (navigator.share) {
-    navigator.share({
-      title: document.title,
-      url: window.location.href
-    })
-    .then(() => {
-      console.log('Link compartilhado com sucesso!');
-    })
-    .catch((error) => {
-      console.error('Erro ao compartilhar link:', error);
-    });
-  } else {
-    console.warn('Web Share API não suportada neste navegador!');
-  }
-}
-
-function copiarTexto() {
-  const textarea = document.getElementById("texto");
-  const copiarElement =  document.querySelector('.copiar');
-  copiarElement.innerHTML = "Copiado!";
-  
-  textarea.select();
-  document.execCommand('copy');
-
-  setTimeout(function() {
-    copiarElement.innerHTML = "Copiar";
-  }, 3000); // Muda o nome da classe para "Copiar" após 3 segundos
-};
 
 
 

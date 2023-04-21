@@ -28,34 +28,21 @@
 
 function printDiv() {
 
-    var conteudo = document.getElementById("texto").value.replace(/\n/g, "<br>"); 
+  var conteudo = document.getElementById("texto").value.replace(/\n/g, "<br>");
   var titulo = "Nota";
-  
-  // abre uma nova guia
-  var novaJanela = window.open("", "_blank");
-  
-  // escreve o conteúdo na nova guia
-  novaJanela.document.write("<h1>" + titulo + "</h1>");
-  novaJanela.document.write(conteudo);
-  
-  // aguarda 2 segundos e, em seguida, chama a função de impressão
-  setTimeout(function() {
-    novaJanela.print();
-    novaJanela.close();
 
-  }, 2000);
-  var novaJanela = window.open("", "_blank");
-
-};
-
-
-    /*  var conteudo = document.getElementById("texto").value.replace(/\n/g, "<br>"); 
-  var titulo = "Nota";
-  var win = window.open("", "_blank"); // abre nova guia
+  var win = window.open("", "_blank");
   win.document.write("<h1>" + titulo + "</h1>");
   win.document.write(conteudo);
-  win.print(); 
-  win.close();*/
+  //win.document.close(); // importante fechar o documento antes de chamar o método de impressão
+  win.print();
+
+
+
+      };
+  
+ 
+
 
 
 
